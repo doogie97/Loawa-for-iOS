@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
             self.userNames = namesKey
         }
-//        print(userNames)
+        print(userNames)
     }
     //MARK: - IBAction
     
@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         showAlert()
     }
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
+        guard !self.userNames.isEmpty else { basicAlert(message: "등록된 즐겨찾기가 없습니다."); return }
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") else { return }
         bookMarkVC.modalPresentationStyle = .fullScreen
         self.present(bookMarkVC, animated: true, completion: nil)
@@ -84,14 +85,18 @@ class ViewController: UIViewController {
     
     private func checkName(name: String) -> Bool {
         if name.trimmingCharacters(in: .whitespaces).count == 0 {
-            let alert = UIAlertController(title: "경고", message: "공백은 안댕!", preferredStyle: .alert)
-            let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(confirmAction)
-            self.present(alert, animated: true, completion: nil)
+            basicAlert(message: "공백 ㄴㄴ")
             return false
         } else {
             return true
         }
+    }
+    
+    private func basicAlert(message: String) {
+        let alert = UIAlertController(title: "경고", message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
