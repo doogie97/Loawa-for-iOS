@@ -21,7 +21,6 @@ final class ViewController: UIViewController {
         if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
             bookMarker.userNames = namesKey
         }
-//        print(bookMarker.userNames.sorted())
     }
     //MARK: - IBAction
     @IBAction func touchGoBackButton(_ sender: UIBarButtonItem) {
@@ -38,7 +37,8 @@ final class ViewController: UIViewController {
     }
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
         guard !bookMarker.userNames.isEmpty else { basicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
-        guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") else { return }
+        guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") as? BookMarkViewController else { return }
+        bookMarkVC.userNames = bookMarker.userNames
         bookMarkVC.modalPresentationStyle = .fullScreen
         self.present(bookMarkVC, animated: true, completion: nil)
     }
