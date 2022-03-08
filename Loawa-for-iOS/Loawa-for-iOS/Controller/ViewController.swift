@@ -14,13 +14,16 @@ final class ViewController: UIViewController {
     @IBOutlet weak var myWebView: WKWebView!
     @IBOutlet weak var myActivityIndizator: UIActivityIndicatorView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
+            bookMarker.userNames = namesKey
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         myWebView.navigationDelegate = self
         loadWebPage("https://loawa.com/")
-        if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
-            bookMarker.userNames = namesKey
-        }
     }
     //MARK: - IBAction
     @IBAction func touchGoBackButton(_ sender: UIBarButtonItem) {

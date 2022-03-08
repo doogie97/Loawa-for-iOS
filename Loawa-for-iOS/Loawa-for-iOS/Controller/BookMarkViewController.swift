@@ -47,6 +47,11 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        self.userNames.remove(at: indexPath.row)
+        if editingStyle == .delete {
+            UserDefaults.standard.removeObject(forKey: self.userNames[indexPath.row])
+            self.userNames.remove(at: indexPath.row)
+            UserDefaults.standard.set(self.userNames, forKey: "UserNames")
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
