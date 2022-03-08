@@ -12,10 +12,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var myWebView: WKWebView!
     @IBOutlet weak var myActivityIndizator: UIActivityIndicatorView!
     
+    var userNames: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myWebView.navigationDelegate = self
         loadWebPage("https://loawa.com/")
+        if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
+            self.userNames = namesKey
+        }
+//        print(userNames)
     }
     //MARK: - IBAction
     
@@ -68,8 +74,11 @@ class ViewController: UIViewController {
         alert.addAction(noAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
     private func addBookMark(key: String) {
         guard let currentURL = myWebView.url else { return }
+        self.userNames.append(key)
+        UserDefaults.standard.set(self.userNames, forKey: "UserNames")
         UserDefaults.standard.set(currentURL, forKey: key)
     }
     
