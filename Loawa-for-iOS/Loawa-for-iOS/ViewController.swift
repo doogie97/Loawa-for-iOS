@@ -38,8 +38,8 @@ class ViewController: UIViewController {
     @IBAction func touchAddButton(_ sender: UIBarButtonItem) {
         showAlert()
     }
-    @IBOutlet weak var touchBookMarkButton: UIToolbar!
-    
+    @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
+    }
     
     //MARK: - functions
     
