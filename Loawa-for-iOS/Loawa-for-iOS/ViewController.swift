@@ -39,6 +39,9 @@ class ViewController: UIViewController {
         showAlert()
     }
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
+        guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") else { return }
+        bookMarkVC.modalPresentationStyle = .fullScreen
+        self.present(bookMarkVC, animated: true, completion: nil)
     }
     
     //MARK: - functions
