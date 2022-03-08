@@ -16,6 +16,7 @@
 		AC7A0E1727D7214D001F5896 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */; };
 		AC7A0E1D27D74270001F5896 /* BookMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E1C27D74270001F5896 /* BookMarker.swift */; };
 		AC7A0E2127D7466B001F5896 /* BookMarkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E2027D7466B001F5896 /* BookMarkError.swift */; };
+		AC7A0E2327D756BB001F5896 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E2227D756BB001F5896 /* BookmarkTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
 		AC7A0E1C27D74270001F5896 /* BookMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarker.swift; sourceTree = "<group>"; };
 		AC7A0E2027D7466B001F5896 /* BookMarkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkError.swift; sourceTree = "<group>"; };
+		AC7A0E2227D756BB001F5896 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				AC64748C27D5BAEB00FAFB6E /* SceneDelegate.swift */,
 				AC64748E27D5BAEB00FAFB6E /* ViewController.swift */,
 				AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */,
+				AC7A0E2227D756BB001F5896 /* BookmarkTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				AC64748F27D5BAEB00FAFB6E /* ViewController.swift in Sources */,
 				AC7A0E1D27D74270001F5896 /* BookMarker.swift in Sources */,
 				AC64748B27D5BAEB00FAFB6E /* AppDelegate.swift in Sources */,
+				AC7A0E2327D756BB001F5896 /* BookmarkTableViewCell.swift in Sources */,
 				AC64748D27D5BAEB00FAFB6E /* SceneDelegate.swift in Sources */,
 				AC7A0E2127D7466B001F5896 /* BookMarkError.swift in Sources */,
 			);
