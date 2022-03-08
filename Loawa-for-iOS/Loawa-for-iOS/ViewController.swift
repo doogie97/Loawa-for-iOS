@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
             self.userNames = namesKey
         }
-        print(userNames)
+//        print(userNames.sorted())
     }
     //MARK: - IBAction
     
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         showAlert()
     }
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
-        guard !self.userNames.isEmpty else { basicAlert(message: "등록된 즐겨찾기가 없습니다."); return }
+        guard !self.userNames.isEmpty else { basicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") else { return }
         bookMarkVC.modalPresentationStyle = .fullScreen
         self.present(bookMarkVC, animated: true, completion: nil)
@@ -66,6 +66,7 @@ class ViewController: UIViewController {
             guard let key = alert.textFields?[0].text?.trimmingCharacters(in: .whitespaces) else { return }
             guard self.checkName(name: key) else { return }
             self.addBookMark(key: key)
+            self.basicAlert(title: nil, message: "등록완료!")
 //            for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
 //                print("\(key) & \(value)")
 //            }
@@ -85,15 +86,18 @@ class ViewController: UIViewController {
     
     private func checkName(name: String) -> Bool {
         if name.trimmingCharacters(in: .whitespaces).count == 0 {
-            basicAlert(message: "공백 ㄴㄴ")
+            basicAlert(title:"경고" ,message: "공백 ㄴㄴ")
+            return false
+        } else if userNames.contains(name) {
+            basicAlert(title:"경고" ,message: "중복 ㄴㄴ")
             return false
         } else {
             return true
         }
     }
     
-    private func basicAlert(message: String) {
-        let alert = UIAlertController(title: "경고", message: message, preferredStyle: .alert)
+    private func basicAlert(title: String?, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(confirmAction)
         self.present(alert, animated: true, completion: nil)
