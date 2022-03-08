@@ -14,6 +14,7 @@
 		AC64749427D5BAEB00FAFB6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC64749327D5BAEB00FAFB6E /* Assets.xcassets */; };
 		AC64749727D5BAEB00FAFB6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC64749527D5BAEB00FAFB6E /* LaunchScreen.storyboard */; };
 		AC7A0E1727D7214D001F5896 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */; };
+		AC7A0E1D27D74270001F5896 /* BookMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E1C27D74270001F5896 /* BookMarker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		AC64749627D5BAEB00FAFB6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC64749827D5BAEB00FAFB6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
+		AC7A0E1C27D74270001F5896 /* BookMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +60,33 @@
 		AC64748927D5BAEB00FAFB6E /* Loawa-for-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				AC64748A27D5BAEB00FAFB6E /* AppDelegate.swift */,
-				AC64748C27D5BAEB00FAFB6E /* SceneDelegate.swift */,
-				AC64748E27D5BAEB00FAFB6E /* ViewController.swift */,
-				AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */,
+				AC7A0E1E27D74276001F5896 /* Model */,
+				AC7A0E1F27D7427F001F5896 /* Controller */,
 				AC64749027D5BAEB00FAFB6E /* Main.storyboard */,
 				AC64749327D5BAEB00FAFB6E /* Assets.xcassets */,
 				AC64749527D5BAEB00FAFB6E /* LaunchScreen.storyboard */,
 				AC64749827D5BAEB00FAFB6E /* Info.plist */,
 			);
 			path = "Loawa-for-iOS";
+			sourceTree = "<group>";
+		};
+		AC7A0E1E27D74276001F5896 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC7A0E1C27D74270001F5896 /* BookMarker.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC7A0E1F27D7427F001F5896 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AC64748A27D5BAEB00FAFB6E /* AppDelegate.swift */,
+				AC64748C27D5BAEB00FAFB6E /* SceneDelegate.swift */,
+				AC64748E27D5BAEB00FAFB6E /* ViewController.swift */,
+				AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +162,7 @@
 			files = (
 				AC7A0E1727D7214D001F5896 /* BookMarkViewController.swift in Sources */,
 				AC64748F27D5BAEB00FAFB6E /* ViewController.swift in Sources */,
+				AC7A0E1D27D74270001F5896 /* BookMarker.swift in Sources */,
 				AC64748B27D5BAEB00FAFB6E /* AppDelegate.swift in Sources */,
 				AC64748D27D5BAEB00FAFB6E /* SceneDelegate.swift in Sources */,
 			);
