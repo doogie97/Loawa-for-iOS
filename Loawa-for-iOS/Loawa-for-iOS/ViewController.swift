@@ -56,17 +56,33 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "등록", message: "유저 별명을 입력해 주세요.", preferredStyle: .alert)
         alert.addTextField()
         let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
-            guard let key = alert.textFields?[0].text else { return }
-            self.getCurrentURL(key: key)
+            guard let key = alert.textFields?[0].text?.trimmingCharacters(in: .whitespaces) else { return }
+            guard self.checkName(name: key) else { return }
+            self.addBookMark(key: key)
+//            for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+//                print("\(key) & \(value)")
+//            }
         })
         let noAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         alert.addAction(yesAction)
         alert.addAction(noAction)
         self.present(alert, animated: true, completion: nil)
     }
-    private func getCurrentURL(key: String) {
+    private func addBookMark(key: String) {
         guard let currentURL = myWebView.url else { return }
         UserDefaults.standard.set(currentURL, forKey: key)
+    }
+    
+    private func checkName(name: String) -> Bool {
+        if name.trimmingCharacters(in: .whitespaces).count == 0 {
+            let alert = UIAlertController(title: "경고", message: "공백은 안댕!", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(confirmAction)
+            self.present(alert, animated: true, completion: nil)
+            return false
+        } else {
+            return true
+        }
     }
 }
 
