@@ -49,12 +49,14 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="tJ4-aE-1YS"/>
-                                            <barButtonItem title="Item" image="star.fill" catalog="system" id="vsb-DS-zBG">
+                                            <barButtonItem systemItem="add" id="vsb-DS-zBG">
                                                 <connections>
-                                                    <action selector="addURL:" destination="hBT-Kx-Ja8" id="ECX-va-deL"/>
+                                                    <action selector="touchAddButton:" destination="hBT-Kx-Ja8" id="E7f-l9-0o4"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Ord-my-9En"/>
+                                            <barButtonItem title="Item" image="star.fill" catalog="system" id="lAn-jn-RCP"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="cTD-vp-K2n"/>
                                         </items>
                                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </toolbar>
@@ -85,11 +87,27 @@
                     <connections>
                         <outlet property="myActivityIndizator" destination="jSW-Y2-BgK" id="x0t-k2-088"/>
                         <outlet property="myWebView" destination="8Oi-6M-bGQ" id="4eb-zG-vjL"/>
+                        <outlet property="touchBookMarkButton" destination="oun-03-ADt" id="Pi6-xL-Xg6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FN-Nh-APD" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="27.536231884057973" y="68.973214285714278"/>
+            <point key="canvasLocation" x="-6" y="100"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sHi-96-UxH">
+            <objects>
+                <viewController id="wbb-HL-FEM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MMI-kd-rGU">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="m1m-CC-D5V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4v7-UB-LhW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="971" y="101"/>
         </scene>
     </scenes>
     <resources>

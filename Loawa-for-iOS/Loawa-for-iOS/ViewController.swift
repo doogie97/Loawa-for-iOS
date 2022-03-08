@@ -35,9 +35,12 @@ class ViewController: UIViewController {
 //
 //        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    @IBAction func addURL(_ sender: UIBarButtonItem) {
+    @IBAction func touchAddButton(_ sender: UIBarButtonItem) {
         showAlert()
     }
+    @IBOutlet weak var touchBookMarkButton: UIToolbar!
+    
+    
     //MARK: - functions
     
     private func loadWebPage(_ url: String) {
