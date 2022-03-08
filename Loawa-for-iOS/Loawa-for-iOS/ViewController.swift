@@ -53,8 +53,7 @@ class ViewController: UIViewController {
             guard let key = alert.textFields?[0].text else { return }
             self.getCurrentURL(key: key)
         })
-        let noAction = UIAlertAction(title: "취소", style: .destructive, handler: {_ in
-        })
+        let noAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         alert.addAction(yesAction)
         alert.addAction(noAction)
         self.present(alert, animated: true, completion: nil)

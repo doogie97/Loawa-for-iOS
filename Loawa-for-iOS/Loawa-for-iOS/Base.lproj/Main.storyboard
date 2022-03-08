@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hBT-Kx-Ja8">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,64 +13,73 @@
             <objects>
                 <viewController id="hBT-Kx-Ja8" customClass="ViewController" customModule="Loawa_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="685-JQ-yXN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Oi-6M-bGQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="789"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oun-03-ADt">
-                                <rect key="frame" x="0.0" y="833" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WEZ-o5-x8h"/>
-                                    <barButtonItem systemItem="rewind" id="Kci-dh-C2p">
-                                        <connections>
-                                            <action selector="touchGoBackButton:" destination="hBT-Kx-Ja8" id="mzz-8s-uaF"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="arN-4l-LHB"/>
-                                    <barButtonItem systemItem="fastForward" id="7hd-lb-Llg">
-                                        <connections>
-                                            <action selector="touchGoFowardButton:" destination="hBT-Kx-Ja8" id="KxD-mn-Vcs"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="afu-ZL-Ovh"/>
-                                    <barButtonItem systemItem="refresh" id="SN3-Gz-eIO">
-                                        <connections>
-                                            <action selector="touchReloadButton:" destination="hBT-Kx-Ja8" id="7vi-of-sht"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tJ4-aE-1YS"/>
-                                    <barButtonItem title="Item" image="star.fill" catalog="system" id="vsb-DS-zBG">
-                                        <connections>
-                                            <action selector="addURL:" destination="hBT-Kx-Ja8" id="ECX-va-deL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ord-my-9En"/>
-                                </items>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h9i-JJ-F0f">
+                                <rect key="frame" x="0.0" y="44" width="428" height="882"/>
+                                <subviews>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Oi-6M-bGQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="805.66666666666663"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oun-03-ADt">
+                                        <rect key="frame" x="0.0" y="805.66666666666663" width="428" height="50"/>
+                                        <items>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="WEZ-o5-x8h"/>
+                                            <barButtonItem systemItem="rewind" id="Kci-dh-C2p">
+                                                <connections>
+                                                    <action selector="touchGoBackButton:" destination="hBT-Kx-Ja8" id="mzz-8s-uaF"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="arN-4l-LHB"/>
+                                            <barButtonItem systemItem="fastForward" id="7hd-lb-Llg">
+                                                <connections>
+                                                    <action selector="touchGoFowardButton:" destination="hBT-Kx-Ja8" id="KxD-mn-Vcs"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="afu-ZL-Ovh"/>
+                                            <barButtonItem systemItem="refresh" id="SN3-Gz-eIO">
+                                                <connections>
+                                                    <action selector="touchReloadButton:" destination="hBT-Kx-Ja8" id="7vi-of-sht"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="tJ4-aE-1YS"/>
+                                            <barButtonItem title="Item" image="star.fill" catalog="system" id="vsb-DS-zBG">
+                                                <connections>
+                                                    <action selector="addURL:" destination="hBT-Kx-Ja8" id="ECX-va-deL"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Ord-my-9En"/>
+                                        </items>
+                                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </toolbar>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMC-po-RdR">
+                                        <rect key="frame" x="0.0" y="855.66666666666663" width="428" height="26.333333333333371"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="jSW-Y2-BgK">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <rect key="frame" x="204" y="453" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ac6-RU-mt3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="oun-03-ADt" firstAttribute="bottom" secondItem="ac6-RU-mt3" secondAttribute="bottom" constant="20" id="BcZ-WT-kpK"/>
-                            <constraint firstItem="ac6-RU-mt3" firstAttribute="bottom" secondItem="8Oi-6M-bGQ" secondAttribute="bottom" constant="29" id="Su7-9X-LP5"/>
-                            <constraint firstItem="8Oi-6M-bGQ" firstAttribute="leading" secondItem="ac6-RU-mt3" secondAttribute="leading" id="V50-Y4-GnL"/>
-                            <constraint firstItem="ac6-RU-mt3" firstAttribute="trailing" secondItem="8Oi-6M-bGQ" secondAttribute="trailing" id="WYa-IE-Wwa"/>
+                            <constraint firstAttribute="bottom" secondItem="h9i-JJ-F0f" secondAttribute="bottom" id="0el-z7-HDC"/>
+                            <constraint firstItem="8Oi-6M-bGQ" firstAttribute="height" secondItem="ac6-RU-mt3" secondAttribute="height" multiplier="95%" id="Mnb-3R-IKm"/>
                             <constraint firstItem="jSW-Y2-BgK" firstAttribute="centerX" secondItem="685-JQ-yXN" secondAttribute="centerX" id="lxv-eU-VxD"/>
+                            <constraint firstItem="h9i-JJ-F0f" firstAttribute="top" secondItem="ac6-RU-mt3" secondAttribute="top" id="m8T-qI-G3q"/>
                             <constraint firstItem="jSW-Y2-BgK" firstAttribute="centerY" secondItem="685-JQ-yXN" secondAttribute="centerY" id="qCj-qm-i66"/>
-                            <constraint firstItem="oun-03-ADt" firstAttribute="leading" secondItem="ac6-RU-mt3" secondAttribute="leading" id="sgK-5Z-gf7"/>
-                            <constraint firstItem="8Oi-6M-bGQ" firstAttribute="top" secondItem="ac6-RU-mt3" secondAttribute="top" id="w4Q-vO-oI8"/>
-                            <constraint firstItem="oun-03-ADt" firstAttribute="trailing" secondItem="ac6-RU-mt3" secondAttribute="trailing" id="yV6-k9-1TO"/>
+                            <constraint firstAttribute="trailing" secondItem="h9i-JJ-F0f" secondAttribute="trailing" id="tHA-zb-LC2"/>
+                            <constraint firstItem="h9i-JJ-F0f" firstAttribute="leading" secondItem="ac6-RU-mt3" secondAttribute="leading" id="yfL-U2-qVb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -80,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FN-Nh-APD" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.037383177570092" y="69.330453563714912"/>
+            <point key="canvasLocation" x="27.536231884057973" y="68.973214285714278"/>
         </scene>
     </scenes>
     <resources>
