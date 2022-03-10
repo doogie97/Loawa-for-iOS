@@ -13,7 +13,6 @@ protocol BookMarkViewControllerDelegate: AnyObject {
 
 class BookMarkViewController: UIViewController {
     @IBOutlet weak var bookmarkTableView: UITableView!
-    @IBOutlet weak var editButton: UIBarButtonItem!
     
     let editNotiName = Notification.Name("editName")
     var userNames : [String] = []
@@ -28,18 +27,35 @@ class BookMarkViewController: UIViewController {
     @IBAction func touchCloseButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func touchEditButton(_ sender: UIBarButtonItem) {
-        if self.bookmarkTableView.isEditing {
-            self.editButton.title = "수정"
-            self.bookmarkTableView.setEditing(false, animated: true)
-        } else {
-            self.editButton.title = "완료"
-            self.bookmarkTableView.setEditing(true, animated: true)
-        }
-    }
+    
     @IBAction func touchMoreEditButton(_ sender: UIButton) {
-        self.userNames[0] = "안녕!"
-        self.bookmarkTableView.reloadData()
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let editAction = UIAlertAction(title: "이름 수정", style: .default, handler: {_ in
+            self.editAlert(tag: sender.tag)
+        })
+        let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
+            UserDefaults.standard.removeObject(forKey: self.userNames[sender.tag])
+            self.userNames.remove(at: sender.tag)
+            UserDefaults.standard.set(self.userNames, forKey: "UserNames")
+            self.bookmarkTableView.reloadData()
+        })
+        let closeAction = UIAlertAction(title: "닫기", style: .default, handler: nil)
+        alert.addAction(editAction)
+        alert.addAction(deleteAction)
+        alert.addAction(closeAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func editAlert(tag: Int) {
+        let alert = UIAlertController(title: "북마크 이름 변경", message: nil, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
+            guard let nameToChange = alert.textFields?[0].text else { return }
+            self.userNames[tag] = nameToChange
+            self.bookmarkTableView.reloadData()
+        })
+        alert.addAction(yesAction)
+        alert.addTextField()
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -51,18 +67,9 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
         let bookmarkTableViewCell = bookmarkTableView.dequeueReusableCell(withIdentifier: "BookmarkTableViewCell", for: indexPath)
         guard let bookmarkTableViewCell = bookmarkTableViewCell as? BookmarkTableViewCell else { return bookmarkTableViewCell }
         bookmarkTableViewCell.userNameLabel.text = self.userNames[indexPath.row]
-//        bookmarkTableViewCell.editButton.tag = indexPath.row
+        bookmarkTableViewCell.editButton.tag = indexPath.row
         
         return bookmarkTableViewCell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            UserDefaults.standard.removeObject(forKey: self.userNames[indexPath.row])
-            self.userNames.remove(at: indexPath.row)
-            UserDefaults.standard.set(self.userNames, forKey: "UserNames")
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

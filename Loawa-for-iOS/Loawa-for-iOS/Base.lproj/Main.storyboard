@@ -103,11 +103,6 @@
                                                 <action selector="touchCloseButton:" destination="wbb-HL-FEM" id="IQG-Sr-sBR"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="수정" id="Uju-KC-gE5">
-                                            <connections>
-                                                <action selector="touchEditButton:" destination="wbb-HL-FEM" id="kB9-Cr-6jD"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -167,7 +162,6 @@
                     </view>
                     <connections>
                         <outlet property="bookmarkTableView" destination="UTR-Ln-OPF" id="cTt-vY-7Fn"/>
-                        <outlet property="editButton" destination="Uju-KC-gE5" id="ilb-lZ-THv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4v7-UB-LhW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
