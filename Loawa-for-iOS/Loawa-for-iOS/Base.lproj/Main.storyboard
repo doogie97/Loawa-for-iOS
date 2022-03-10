@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hBT-Kx-Ja8">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NMe-jm-eRN">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,103 +9,93 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="wGD-fc-tAW">
+        <scene sceneID="9Py-TP-bce">
             <objects>
-                <viewController id="hBT-Kx-Ja8" customClass="ViewController" customModule="Loawa_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="685-JQ-yXN">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                <viewController id="NMe-jm-eRN" customClass="ViewController" customModule="Loawa_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HlS-zk-Ctb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h9i-JJ-F0f">
-                                <rect key="frame" x="0.0" y="44" width="428" height="882"/>
-                                <subviews>
-                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Oi-6M-bGQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="805.66666666666663"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <wkWebViewConfiguration key="configuration">
-                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                            <wkPreferences key="preferences"/>
-                                        </wkWebViewConfiguration>
-                                    </wkWebView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oun-03-ADt">
-                                        <rect key="frame" x="0.0" y="805.66666666666663" width="428" height="50"/>
-                                        <items>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="WEZ-o5-x8h"/>
-                                            <barButtonItem systemItem="rewind" id="Kci-dh-C2p">
-                                                <connections>
-                                                    <action selector="touchGoBackButton:" destination="hBT-Kx-Ja8" id="mzz-8s-uaF"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="arN-4l-LHB"/>
-                                            <barButtonItem systemItem="fastForward" id="7hd-lb-Llg">
-                                                <connections>
-                                                    <action selector="touchGoFowardButton:" destination="hBT-Kx-Ja8" id="KxD-mn-Vcs"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="afu-ZL-Ovh"/>
-                                            <barButtonItem systemItem="refresh" id="SN3-Gz-eIO">
-                                                <connections>
-                                                    <action selector="touchReloadButton:" destination="hBT-Kx-Ja8" id="7vi-of-sht"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="tJ4-aE-1YS"/>
-                                            <barButtonItem systemItem="add" id="vsb-DS-zBG">
-                                                <connections>
-                                                    <action selector="touchAddButton:" destination="hBT-Kx-Ja8" id="E7f-l9-0o4"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Ord-my-9En"/>
-                                            <barButtonItem title="Item" image="star.fill" catalog="system" id="lAn-jn-RCP">
-                                                <connections>
-                                                    <action selector="touchBookMarkButton:" destination="hBT-Kx-Ja8" id="BC9-tG-Nfr"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="cTD-vp-K2n"/>
-                                        </items>
-                                    </toolbar>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMC-po-RdR">
-                                        <rect key="frame" x="0.0" y="855.66666666666663" width="428" height="26.333333333333371"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="jSW-Y2-BgK">
-                                <rect key="frame" x="204" y="453" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YE9-5K-LYn">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7m-vG-YL5">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="IXC-sF-jmb"/>
+                                    <barButtonItem systemItem="rewind" id="wak-cw-2sD">
+                                        <connections>
+                                            <action selector="touchGoBackButton:" destination="NMe-jm-eRN" id="L4V-JH-gNw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9eC-IN-qE9"/>
+                                    <barButtonItem systemItem="fastForward" id="zA4-BT-OZt">
+                                        <connections>
+                                            <action selector="touchGoFowardButton:" destination="NMe-jm-eRN" id="VKr-zv-QDf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9iE-2R-8DP"/>
+                                    <barButtonItem systemItem="refresh" id="VkL-HC-atb">
+                                        <connections>
+                                            <action selector="touchReloadButton:" destination="NMe-jm-eRN" id="e3i-9c-Ste"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gCU-4E-2ct"/>
+                                    <barButtonItem systemItem="add" id="Jvh-Pw-dh8">
+                                        <connections>
+                                            <action selector="touchAddButton:" destination="NMe-jm-eRN" id="ASE-1x-MmX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="V86-K6-Inx"/>
+                                    <barButtonItem title="Item" image="star.fill" catalog="system" id="Zy9-Sl-9sU">
+                                        <connections>
+                                            <action selector="touchBookMarkButton:" destination="NMe-jm-eRN" id="Qcl-K4-qkH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rc3-J2-YNJ"/>
+                                </items>
+                            </toolbar>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okF-HY-nhT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="ac6-RU-mt3"/>
+                        <viewLayoutGuide key="safeArea" id="KgO-Co-Rnk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="h9i-JJ-F0f" secondAttribute="bottom" id="0el-z7-HDC"/>
-                            <constraint firstItem="8Oi-6M-bGQ" firstAttribute="height" secondItem="ac6-RU-mt3" secondAttribute="height" multiplier="95%" id="Mnb-3R-IKm"/>
-                            <constraint firstItem="jSW-Y2-BgK" firstAttribute="centerX" secondItem="685-JQ-yXN" secondAttribute="centerX" id="lxv-eU-VxD"/>
-                            <constraint firstItem="h9i-JJ-F0f" firstAttribute="top" secondItem="ac6-RU-mt3" secondAttribute="top" id="m8T-qI-G3q"/>
-                            <constraint firstItem="jSW-Y2-BgK" firstAttribute="centerY" secondItem="685-JQ-yXN" secondAttribute="centerY" id="qCj-qm-i66"/>
-                            <constraint firstAttribute="trailing" secondItem="h9i-JJ-F0f" secondAttribute="trailing" id="tHA-zb-LC2"/>
-                            <constraint firstItem="h9i-JJ-F0f" firstAttribute="leading" secondItem="ac6-RU-mt3" secondAttribute="leading" id="yfL-U2-qVb"/>
+                            <constraint firstItem="okF-HY-nhT" firstAttribute="trailing" secondItem="KgO-Co-Rnk" secondAttribute="trailing" id="6XN-bn-5PF"/>
+                            <constraint firstItem="okF-HY-nhT" firstAttribute="leading" secondItem="KgO-Co-Rnk" secondAttribute="leading" id="6hJ-3s-cw8"/>
+                            <constraint firstItem="R7m-vG-YL5" firstAttribute="bottom" secondItem="KgO-Co-Rnk" secondAttribute="bottom" id="7au-IZ-KiM"/>
+                            <constraint firstItem="okF-HY-nhT" firstAttribute="top" secondItem="HlS-zk-Ctb" secondAttribute="top" id="ByU-rF-QCp"/>
+                            <constraint firstItem="R7m-vG-YL5" firstAttribute="trailing" secondItem="KgO-Co-Rnk" secondAttribute="trailing" id="DsY-oG-yID"/>
+                            <constraint firstItem="R7m-vG-YL5" firstAttribute="top" secondItem="okF-HY-nhT" secondAttribute="bottom" id="KQv-Tz-GcY"/>
+                            <constraint firstItem="R7m-vG-YL5" firstAttribute="leading" secondItem="KgO-Co-Rnk" secondAttribute="leading" id="qeh-9c-SQ6"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="myActivityIndizator" destination="jSW-Y2-BgK" id="x0t-k2-088"/>
-                        <outlet property="myWebView" destination="8Oi-6M-bGQ" id="4eb-zG-vjL"/>
+                        <outlet property="myActivityIndizator" destination="YE9-5K-LYn" id="kfg-di-37w"/>
+                        <outlet property="myWebView" destination="okF-HY-nhT" id="byF-ij-8dH"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6FN-Nh-APD" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q3i-VV-j9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6" y="100"/>
+            <point key="canvasLocation" x="-696" y="73"/>
         </scene>
         <!--Book Mark View Controller-->
         <scene sceneID="sHi-96-UxH">
             <objects>
                 <viewController storyboardIdentifier="BookMarkViewController" id="wbb-HL-FEM" customClass="BookMarkViewController" customModule="Loawa_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MMI-kd-rGU">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-dF-rAP">
-                                <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="북마크" id="htK-D8-PuC">
                                         <barButtonItem key="leftBarButtonItem" title="닫기" id="Tfe-Id-mEl">
@@ -122,18 +112,18 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UTR-Ln-OPF">
-                                <rect key="frame" x="0.0" y="88" width="428" height="804"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookmarkTableViewCell" id="Rc3-xJ-bNg" customClass="BookmarkTableViewCell" customModule="Loawa_for_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rc3-xJ-bNg" id="y5S-bi-nkx">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dw-5J-32q">
-                                                    <rect key="frame" x="20" y="11.333333333333336" width="388" height="21"/>
+                                                    <rect key="frame" x="20" y="11.333333333333336" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

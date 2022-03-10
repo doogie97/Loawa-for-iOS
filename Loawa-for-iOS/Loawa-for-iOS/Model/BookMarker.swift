@@ -5,7 +5,6 @@
 //  Created by 최최성균 on 2022/03/08.
 //
 
-import UIKit
 import WebKit
 
 final class BookMarker {

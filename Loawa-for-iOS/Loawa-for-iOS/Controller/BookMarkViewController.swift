@@ -10,7 +10,7 @@ import UIKit
 class BookMarkViewController: UIViewController {
     @IBOutlet weak var bookmarkTableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
-    let cellName = "BookmarkTableViewCell"
+    
     var userNames : [String] = []
     
     override func viewDidLoad() {
@@ -37,7 +37,6 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userNames.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let bookmarkTableViewCell = bookmarkTableView.dequeueReusableCell(withIdentifier: "BookmarkTableViewCell", for: indexPath)
         guard let bookmarkTableViewCell = bookmarkTableViewCell as? BookmarkTableViewCell else { return bookmarkTableViewCell }
@@ -53,5 +52,10 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
             UserDefaults.standard.set(self.userNames, forKey: "UserNames")
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(self.userNames[indexPath.row])
+        self.dismiss(animated: true, completion: nil)
     }
 }
