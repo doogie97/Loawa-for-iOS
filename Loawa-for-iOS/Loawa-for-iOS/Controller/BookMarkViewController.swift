@@ -15,6 +15,7 @@ class BookMarkViewController: UIViewController {
     @IBOutlet weak var bookmarkTableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    let editNotiName = Notification.Name("editName")
     var userNames : [String] = []
     weak var delegate: BookMarkViewControllerDelegate?
     
@@ -22,6 +23,7 @@ class BookMarkViewController: UIViewController {
         super.viewDidLoad()
         bookmarkTableView.delegate = self
         bookmarkTableView.dataSource = self
+        NotificationCenter.default.addObserver(self, selector: #selector(editName), name: editNotiName, object: nil)
     }
     //MARK: - IBActions
     @IBAction func touchCloseButton(_ sender: UIBarButtonItem) {
@@ -36,6 +38,10 @@ class BookMarkViewController: UIViewController {
             self.bookmarkTableView.setEditing(true, animated: true)
         }
     }
+    @objc func editName(_ notification: Notification) {
+        guard let buttonTag = notification.object as? Int else { return } // 배열에서 사용될 버튼 태그
+        print(userNames[buttonTag])
+    }
 }
 
 extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
@@ -46,6 +52,7 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
         let bookmarkTableViewCell = bookmarkTableView.dequeueReusableCell(withIdentifier: "BookmarkTableViewCell", for: indexPath)
         guard let bookmarkTableViewCell = bookmarkTableViewCell as? BookmarkTableViewCell else { return bookmarkTableViewCell }
         bookmarkTableViewCell.userNameLabel.text = self.userNames[indexPath.row]
+        bookmarkTableViewCell.editButton.tag = indexPath.row
         
         return bookmarkTableViewCell
     }

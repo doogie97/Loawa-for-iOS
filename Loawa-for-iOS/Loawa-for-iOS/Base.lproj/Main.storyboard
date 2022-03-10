@@ -122,20 +122,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dw-5J-32q">
-                                                    <rect key="frame" x="20" y="11.333333333333336" width="374" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dw-5J-32q">
+                                                    <rect key="frame" x="20" y="11.333333333333336" width="338.66666666666669" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k8-dx-ioX">
+                                                    <rect key="frame" x="358.66666666666669" y="6.6666666666666661" width="45.333333333333314" height="30.666666666666671"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="touchEditButton:" destination="Rc3-xJ-bNg" eventType="touchUpInside" id="ljm-ia-CVP"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="0Dw-5J-32q" secondAttribute="trailing" id="FfR-QS-3ll"/>
+                                                <constraint firstItem="7k8-dx-ioX" firstAttribute="centerY" secondItem="y5S-bi-nkx" secondAttribute="centerY" id="061-O4-XTs"/>
                                                 <constraint firstItem="0Dw-5J-32q" firstAttribute="centerY" secondItem="y5S-bi-nkx" secondAttribute="centerY" id="HnQ-jF-jEd"/>
                                                 <constraint firstItem="0Dw-5J-32q" firstAttribute="leading" secondItem="y5S-bi-nkx" secondAttribute="leadingMargin" id="POU-oh-AId"/>
+                                                <constraint firstAttribute="trailing" secondItem="7k8-dx-ioX" secondAttribute="trailing" constant="10" id="VGy-xS-TBa"/>
+                                                <constraint firstItem="7k8-dx-ioX" firstAttribute="leading" secondItem="0Dw-5J-32q" secondAttribute="trailing" id="bnf-Ye-nKt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="editButton" destination="7k8-dx-ioX" id="N5Q-vi-sZL"/>
                                             <outlet property="userNameLabel" destination="0Dw-5J-32q" id="TJ2-Sm-ecz"/>
                                         </connections>
                                     </tableViewCell>
@@ -161,10 +172,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4v7-UB-LhW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792" y="100"/>
+            <point key="canvasLocation" x="791.304347826087" y="99.456521739130437"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

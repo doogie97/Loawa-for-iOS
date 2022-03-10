@@ -9,16 +9,20 @@ import UIKit
 
 class BookmarkTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    
+    let editNotiName = Notification.Name("editName")
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
+    @IBAction func touchEditButton(_ sender: UIButton) {
+        NotificationCenter.default.post(name: editNotiName, object: editButton.tag)
+    }
 }
