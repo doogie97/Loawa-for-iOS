@@ -23,6 +23,7 @@ class BookmarkTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func touchEditButton(_ sender: UIButton) {
-        NotificationCenter.default.post(name: editNotiName, object: editButton.tag)
+        guard let name = userNameLabel.text else { return }
+        NotificationCenter.default.post(name: editNotiName, object: name)
     }
 }

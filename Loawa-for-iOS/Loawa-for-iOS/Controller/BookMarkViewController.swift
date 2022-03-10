@@ -39,8 +39,8 @@ class BookMarkViewController: UIViewController {
         }
     }
     @objc func editName(_ notification: Notification) {
-        guard let buttonTag = notification.object as? Int else { return } // 배열에서 사용될 버튼 태그
-        print(userNames[buttonTag])
+        guard let name = notification.object as? String else { return } // 배열에서 사용될 버튼 태그
+        print(name)
     }
 }
 
@@ -52,7 +52,7 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
         let bookmarkTableViewCell = bookmarkTableView.dequeueReusableCell(withIdentifier: "BookmarkTableViewCell", for: indexPath)
         guard let bookmarkTableViewCell = bookmarkTableViewCell as? BookmarkTableViewCell else { return bookmarkTableViewCell }
         bookmarkTableViewCell.userNameLabel.text = self.userNames[indexPath.row]
-        bookmarkTableViewCell.editButton.tag = indexPath.row
+//        bookmarkTableViewCell.editButton.tag = indexPath.row
         
         return bookmarkTableViewCell
     }
