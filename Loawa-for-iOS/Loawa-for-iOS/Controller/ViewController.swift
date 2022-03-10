@@ -42,7 +42,7 @@ final class ViewController: UIViewController {
         guard !bookMarker.userNames.isEmpty else { basicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") as? BookMarkViewController else { return }
         bookMarkVC.delegate = self
-        bookMarkVC.userNames = bookMarker.userNames
+        bookMarkVC.userNames = bookMarker.userNames.sorted()
         bookMarkVC.modalPresentationStyle = .fullScreen
         self.present(bookMarkVC, animated: true, completion: nil)
     }
