@@ -41,6 +41,7 @@ final class ViewController: UIViewController {
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
         guard !bookMarker.userNames.isEmpty else { basicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") as? BookMarkViewController else { return }
+        bookMarkVC.delegate = self
         bookMarkVC.userNames = bookMarker.userNames
         bookMarkVC.modalPresentationStyle = .fullScreen
         self.present(bookMarkVC, animated: true, completion: nil)
@@ -97,5 +98,12 @@ extension ViewController: WKUIDelegate, WKNavigationDelegate {
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.myActivityIndizator.stopAnimating()
+    }
+}
+
+extension ViewController: BookMarkViewControllerDelegate {
+    func sendName(name: String) {
+        guard let userURL = UserDefaults.standard.url(forKey: name) else { return }
+        loadWebPage("\(userURL)")
     }
 }

@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol BookMarkViewControllerDelegate: AnyObject {
+    func sendName(name: String)
+}
+
 class BookMarkViewController: UIViewController {
     @IBOutlet weak var bookmarkTableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     var userNames : [String] = []
+    weak var delegate: BookMarkViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +60,7 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.userNames[indexPath.row])
+        delegate?.sendName(name: self.userNames[indexPath.row])
         self.dismiss(animated: true, completion: nil)
     }
 }
