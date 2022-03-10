@@ -133,7 +133,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle" catalog="system"/>
                                                     <connections>
-                                                        <action selector="touchEditButton:" destination="Rc3-xJ-bNg" eventType="touchUpInside" id="ljm-ia-CVP"/>
+                                                        <action selector="touchMoreEditButton:" destination="wbb-HL-FEM" eventType="touchUpInside" id="znJ-vY-V10"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -146,8 +146,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="editButton" destination="7k8-dx-ioX" id="N5Q-vi-sZL"/>
-                                            <outlet property="userNameLabel" destination="0Dw-5J-32q" id="TJ2-Sm-ecz"/>
+                                            <outlet property="editButton" destination="7k8-dx-ioX" id="V4G-pN-spE"/>
+                                            <outlet property="userNameLabel" destination="0Dw-5J-32q" id="R3S-dV-vcV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4v7-UB-LhW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791.304347826087" y="99.456521739130437"/>
+            <point key="canvasLocation" x="229" y="92"/>
         </scene>
     </scenes>
     <resources>

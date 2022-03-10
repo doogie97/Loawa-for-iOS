@@ -23,7 +23,6 @@ class BookMarkViewController: UIViewController {
         super.viewDidLoad()
         bookmarkTableView.delegate = self
         bookmarkTableView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector: #selector(editName), name: editNotiName, object: nil)
     }
     //MARK: - IBActions
     @IBAction func touchCloseButton(_ sender: UIBarButtonItem) {
@@ -38,9 +37,9 @@ class BookMarkViewController: UIViewController {
             self.bookmarkTableView.setEditing(true, animated: true)
         }
     }
-    @objc func editName(_ notification: Notification) {
-        guard let name = notification.object as? String else { return } // 배열에서 사용될 버튼 태그
-        print(name)
+    @IBAction func touchMoreEditButton(_ sender: UIButton) {
+        self.userNames[0] = "안녕!"
+        self.bookmarkTableView.reloadData()
     }
 }
 
