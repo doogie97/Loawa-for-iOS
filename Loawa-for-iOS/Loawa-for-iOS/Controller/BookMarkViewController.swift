@@ -14,7 +14,6 @@ protocol BookMarkViewControllerDelegate: AnyObject {
 class BookMarkViewController: UIViewController {
     @IBOutlet weak var bookmarkTableView: UITableView!
     
-    let editNotiName = Notification.Name("editName")
     var userNames : [String] = []
     weak var delegate: BookMarkViewControllerDelegate?
     
@@ -31,7 +30,7 @@ class BookMarkViewController: UIViewController {
     @IBAction func touchMoreEditButton(_ sender: UIButton) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let editAction = UIAlertAction(title: "이름 수정", style: .default, handler: {_ in
-            self.editAlert(tag: sender.tag)
+            self.showEditAlert(tag: sender.tag)
         })
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
             UserDefaults.standard.removeObject(forKey: self.userNames[sender.tag])
@@ -45,15 +44,20 @@ class BookMarkViewController: UIViewController {
         alert.addAction(closeAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func editAlert(tag: Int) {
+    // MARK: - functions
+    func showEditAlert(tag: Int) {
         let alert = UIAlertController(title: "북마크 이름 변경", message: nil, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
             guard let nameToChange = alert.textFields?[0].text else { return }
+            UserDefaults.standard.set(UserDefaults.standard.url(forKey: self.userNames[tag]), forKey: nameToChange)
+            UserDefaults.standard.removeObject(forKey: self.userNames[tag])
             self.userNames[tag] = nameToChange
+            UserDefaults.standard.set(self.userNames, forKey: "UserNames")
             self.bookmarkTableView.reloadData()
         })
+        let noAction = UIAlertAction(title: "취소", style: .default, handler: nil)
         alert.addAction(yesAction)
+        alert.addAction(noAction)
         alert.addTextField()
         self.present(alert, animated: true, completion: nil)
     }
