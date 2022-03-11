@@ -23,4 +23,12 @@ final class BookmarkStorage {
             throw RegisterError.duplicatenames
         }
     }
+    
+    func setBasicAlert(title: String?, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(confirmAction)
+        return alert
+    }
 }
+

@@ -16,7 +16,9 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserNames()
+        if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
+            bookmarkstorage.userNames = namesKey
+        }
         myWebView.navigationDelegate = self
         loadWebPage("https://loawa.com/")
     }
@@ -31,10 +33,19 @@ final class ViewController: UIViewController {
         myWebView.reload()
     }
     @IBAction func touchAddButton(_ sender: UIBarButtonItem) {
-        showAddAlert()
+        let alert = UIAlertController(title: "북마크 등록", message: "유저 별명을 입력해 주세요.", preferredStyle: .alert)
+        alert.addTextField()
+        let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
+            guard let key = alert.textFields?[0].text else { return }
+            self.checkName(key: key)
+        })
+        let noAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        self.present(alert, animated: true, completion: nil)
     }
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
-        guard !bookmarkstorage.userNames.isEmpty else { basicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
+        guard !bookmarkstorage.userNames.isEmpty else { showBasicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") as? BookMarkViewController else { return }
 
 //        bookMarkVC.userNames = bookmarkstorage.userNames.sorted() // 지워도될듯
@@ -51,45 +62,23 @@ final class ViewController: UIViewController {
         myWebView.load(myRequst)
     }
     
-    private func showAddAlert() {
-        let alert = UIAlertController(title: "북마크 등록", message: "유저 별명을 입력해 주세요.", preferredStyle: .alert)
-        alert.addTextField()
-        let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
-            guard let key = alert.textFields?[0].text else { return }
-            self.checkName(key: key)
-        })
-        let noAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-        alert.addAction(yesAction)
-        alert.addAction(noAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     private func checkName(key: String) {
         do {
             try bookmarkstorage.checkName(name: key)
             self.bookmarkstorage.addBookMark(webView: self.myWebView, key: key)
-            self.basicAlert(title: nil, message: "등록완료!")
+            self.showBasicAlert(title: nil, message: "등록완료!")
         } catch let error as RegisterError {
             switch error {
             case .emptyTextField:
-                basicAlert(title:"경고" ,message: "공백 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: "공백 ㄴㄴ")
             case .duplicatenames:
-                basicAlert(title:"경고" ,message: "중복 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: "중복 ㄴㄴ")
             }
-        } catch { basicAlert(title: nil, message: "알 수 없는 오류")}
+        } catch { showBasicAlert(title: nil, message: "알 수 없는 오류")}
     }
     
-    private func basicAlert(title: String?, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        alert.addAction(confirmAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func getUserNames() {
-        if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
-            bookmarkstorage.userNames = namesKey
-        }
+    private func showBasicAlert(title: String?, message: String) {
+        self.present(bookmarkstorage.setBasicAlert(title: title, message: message), animated: true, completion: nil)
     }
 }
 extension ViewController: BookMarkViewControllerDelegate {

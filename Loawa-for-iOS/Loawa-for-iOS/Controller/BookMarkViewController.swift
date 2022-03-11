@@ -28,13 +28,14 @@ class BookMarkViewController: UIViewController {
     }
     
     @IBAction func touchMoreEditButton(_ sender: UIButton) {
+        guard let bookmarker = bookmarker else { return }
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let editAction = UIAlertAction(title: "이름 수정", style: .default, handler: {_ in
             self.showEditAlert(tag: sender.tag)
         })
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
-            UserDefaults.standard.removeObject(forKey: self.bookmarker?.userNames[sender.tag] ?? "")
-            self.bookmarker?.userNames.remove(at: sender.tag)
+            UserDefaults.standard.removeObject(forKey: bookmarker.userNames[sender.tag])
+            bookmarker.userNames.remove(at: sender.tag)
             self.saveNames()
         })
         let closeAction = UIAlertAction(title: "닫기", style: .default, handler: nil)
@@ -64,27 +65,30 @@ class BookMarkViewController: UIViewController {
     }
     
     private func checkName(tag:Int, name: String) {
+        guard let bookmarker = bookmarker else { return }
         do {
-            try bookmarker?.checkName(name: name)
-            UserDefaults.standard.set(UserDefaults.standard.url(forKey: self.bookmarker?.userNames[tag] ?? ""), forKey: name)
-            UserDefaults.standard.removeObject(forKey: self.bookmarker?.userNames[tag] ?? "")
-            self.bookmarker?.userNames[tag] = name
-            self.basicAlert(title: nil, message: "등록완료!")
+            try bookmarker.checkName(name: name)
+            changeName(name: name, tag: tag)
         } catch let error as RegisterError {
             switch error {
             case .emptyTextField:
-                basicAlert(title:"경고" ,message: "공백 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: "공백 ㄴㄴ")
             case .duplicatenames:
-                basicAlert(title:"경고" ,message: "중복 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: "중복 ㄴㄴ")
             }
-        } catch { basicAlert(title: nil, message: "알 수 없는 오류")}
+        } catch { showBasicAlert(title: nil, message: "알 수 없는 오류")}
+    }
+    private func changeName(name: String, tag: Int){
+        guard let bookmarker = bookmarker else { return }
+        UserDefaults.standard.set(UserDefaults.standard.url(forKey: bookmarker.userNames[tag]), forKey: name)
+        UserDefaults.standard.removeObject(forKey: bookmarker.userNames[tag])
+        bookmarker.userNames[tag] = name
+        self.showBasicAlert(title: nil, message: "변경완료!")
     }
     
-    private func basicAlert(title: String?, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        alert.addAction(confirmAction)
-        self.present(alert, animated: true, completion: nil)
+    private func showBasicAlert(title: String?, message: String) {
+        guard let bookmarker = bookmarker else { return }
+        self.present(bookmarker.setBasicAlert(title: title, message: message), animated: true, completion: nil)
     }
 }
 
