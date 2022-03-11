@@ -48,9 +48,7 @@ class BookMarkViewController: UIViewController {
         let alert = UIAlertController(title: "북마크 이름 변경", message: nil, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
             guard let nameToChange = alert.textFields?[0].text else { return }
-            UserDefaults.standard.set(UserDefaults.standard.url(forKey: self.bookmarker?.userNames[tag] ?? ""), forKey: nameToChange)
-            UserDefaults.standard.removeObject(forKey: self.bookmarker?.userNames[tag] ?? "")
-            self.bookmarker?.userNames[tag] = nameToChange
+            self.checkName(tag: tag, name: nameToChange)
             self.saveNames()
         })
         let noAction = UIAlertAction(title: "취소", style: .default, handler: nil)
@@ -65,6 +63,29 @@ class BookMarkViewController: UIViewController {
         self.bookmarkTableView.reloadData()
     }
     
+    private func checkName(tag:Int, name: String) {
+        do {
+            try bookmarker?.checkName(name: name)
+            UserDefaults.standard.set(UserDefaults.standard.url(forKey: self.bookmarker?.userNames[tag] ?? ""), forKey: name)
+            UserDefaults.standard.removeObject(forKey: self.bookmarker?.userNames[tag] ?? "")
+            self.bookmarker?.userNames[tag] = name
+            self.basicAlert(title: nil, message: "등록완료!")
+        } catch let error as RegisterError {
+            switch error {
+            case .emptyTextField:
+                basicAlert(title:"경고" ,message: "공백 ㄴㄴ")
+            case .duplicatenames:
+                basicAlert(title:"경고" ,message: "중복 ㄴㄴ")
+            }
+        } catch { basicAlert(title: nil, message: "알 수 없는 오류")}
+    }
+    
+    private func basicAlert(title: String?, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
