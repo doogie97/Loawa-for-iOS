@@ -49,6 +49,12 @@
                                             <action selector="touchBookMarkButton:" destination="NMe-jm-eRN" id="Qcl-K4-qkH"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rEn-5N-ojz"/>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="eWD-fX-i44">
+                                        <connections>
+                                            <action selector="touchShareButton:" destination="NMe-jm-eRN" id="cKh-Qt-bGF"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rc3-J2-YNJ"/>
                                 </items>
                             </toolbar>
@@ -172,6 +178,7 @@
     </scenes>
     <resources>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

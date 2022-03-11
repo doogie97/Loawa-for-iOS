@@ -49,8 +49,16 @@ final class ViewController: UIViewController {
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") as? BookMarkViewController else { return }
         bookMarkVC.delegate = self
         bookMarkVC.bookmarker = self.bookmarkstorage
-        bookMarkVC.modalPresentationStyle = .fullScreen
+
         self.present(bookMarkVC, animated: true, completion: nil)
+    }
+    @IBAction func touchShareButton(_ sender: UIBarButtonItem) {
+        var objectsToShare = [URL]()
+        guard let url = myWebView.url else { return }
+        objectsToShare.append(url)
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
     }
     //MARK: - functions
     private func loadWebPage(_ url: String) {
@@ -90,6 +98,7 @@ extension ViewController: WKUIDelegate, WKNavigationDelegate {
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.myActivityIndizator.stopAnimating()
+        myWebView.allowsBackForwardNavigationGestures = true
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.myActivityIndizator.stopAnimating()
