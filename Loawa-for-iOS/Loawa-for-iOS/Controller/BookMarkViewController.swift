@@ -8,7 +8,8 @@
 import UIKit
 
 protocol BookMarkViewControllerDelegate: AnyObject {
-    func sendName(name: String)
+    func searchName(name: String)
+    func changeNamesArray(userNames: [String])
 }
 
 class BookMarkViewController: UIViewController {
@@ -35,8 +36,7 @@ class BookMarkViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
             UserDefaults.standard.removeObject(forKey: self.userNames[sender.tag])
             self.userNames.remove(at: sender.tag)
-            UserDefaults.standard.set(self.userNames, forKey: "UserNames")
-            self.bookmarkTableView.reloadData()
+            self.saveNames()
         })
         let closeAction = UIAlertAction(title: "닫기", style: .default, handler: nil)
         alert.addAction(editAction)
@@ -45,21 +45,26 @@ class BookMarkViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     // MARK: - functions
-    func showEditAlert(tag: Int) {
+    private func showEditAlert(tag: Int) {
         let alert = UIAlertController(title: "북마크 이름 변경", message: nil, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
             guard let nameToChange = alert.textFields?[0].text else { return }
             UserDefaults.standard.set(UserDefaults.standard.url(forKey: self.userNames[tag]), forKey: nameToChange)
             UserDefaults.standard.removeObject(forKey: self.userNames[tag])
             self.userNames[tag] = nameToChange
-            UserDefaults.standard.set(self.userNames, forKey: "UserNames")
-            self.bookmarkTableView.reloadData()
+            self.saveNames()
         })
         let noAction = UIAlertAction(title: "취소", style: .default, handler: nil)
         alert.addAction(yesAction)
         alert.addAction(noAction)
         alert.addTextField()
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func saveNames() {
+        UserDefaults.standard.set(self.userNames, forKey: "UserNames")
+        self.delegate?.changeNamesArray(userNames: self.userNames)
+        self.bookmarkTableView.reloadData()
     }
 }
 
@@ -77,7 +82,7 @@ extension BookMarkViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.sendName(name: self.userNames[indexPath.row])
+        delegate?.searchName(name: self.userNames[indexPath.row])
         self.dismiss(animated: true, completion: nil)
     }
 }

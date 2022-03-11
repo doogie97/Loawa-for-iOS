@@ -14,14 +14,9 @@ final class ViewController: UIViewController {
     @IBOutlet weak var myWebView: WKWebView!
     @IBOutlet weak var myActivityIndizator: UIActivityIndicatorView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
-            bookMarker.userNames = namesKey
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserNames()
         myWebView.navigationDelegate = self
         loadWebPage("https://loawa.com/")
     }
@@ -54,7 +49,7 @@ final class ViewController: UIViewController {
     }
     
     private func showAddAlert() {
-        let alert = UIAlertController(title: "등록", message: "유저 별명을 입력해 주세요.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "북마크 등록", message: "유저 별명을 입력해 주세요.", preferredStyle: .alert)
         alert.addTextField()
         let yesAction = UIAlertAction(title: "확인", style: .default, handler: {_ in
             guard let key = alert.textFields?[0].text else { return }
@@ -87,8 +82,23 @@ final class ViewController: UIViewController {
         alert.addAction(confirmAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    private func getUserNames() {
+        if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
+            bookMarker.userNames = namesKey
+        }
+    }
 }
-
+extension ViewController: BookMarkViewControllerDelegate {
+    func changeNamesArray(userNames: [String]) {
+        getUserNames()
+    }
+    
+    func searchName(name: String) {
+        guard let userURL = UserDefaults.standard.url(forKey: name) else { return }
+        loadWebPage("\(userURL)")
+    }
+}
 extension ViewController: WKUIDelegate, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         self.myActivityIndizator.startAnimating()
@@ -98,12 +108,5 @@ extension ViewController: WKUIDelegate, WKNavigationDelegate {
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.myActivityIndizator.stopAnimating()
-    }
-}
-
-extension ViewController: BookMarkViewControllerDelegate {
-    func sendName(name: String) {
-        guard let userURL = UserDefaults.standard.url(forKey: name) else { return }
-        loadWebPage("\(userURL)")
     }
 }
