@@ -92,8 +92,9 @@ extension ViewController: BookMarkViewControllerDelegate {
         loadWebPage("\(userURL)")
     }
 }
-extension ViewController: WKUIDelegate, WKNavigationDelegate {
+extension ViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        self.myActivityIndicator.isHidden = false
         self.myActivityIndicator.startAnimating()
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
