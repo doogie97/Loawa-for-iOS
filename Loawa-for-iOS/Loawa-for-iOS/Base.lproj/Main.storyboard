@@ -66,10 +66,9 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YE9-5K-LYn">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YE9-5K-LYn">
                                 <rect key="frame" x="197" y="358" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KgO-Co-Rnk"/>
@@ -81,17 +80,19 @@
                             <constraint firstItem="okF-HY-nhT" firstAttribute="top" secondItem="HlS-zk-Ctb" secondAttribute="top" id="ByU-rF-QCp"/>
                             <constraint firstItem="R7m-vG-YL5" firstAttribute="trailing" secondItem="KgO-Co-Rnk" secondAttribute="trailing" id="DsY-oG-yID"/>
                             <constraint firstItem="R7m-vG-YL5" firstAttribute="top" secondItem="okF-HY-nhT" secondAttribute="bottom" id="KQv-Tz-GcY"/>
+                            <constraint firstItem="YE9-5K-LYn" firstAttribute="centerY" secondItem="HlS-zk-Ctb" secondAttribute="centerY" id="hLI-iO-dV9"/>
+                            <constraint firstItem="YE9-5K-LYn" firstAttribute="centerX" secondItem="HlS-zk-Ctb" secondAttribute="centerX" id="ncw-3n-cfc"/>
                             <constraint firstItem="R7m-vG-YL5" firstAttribute="leading" secondItem="KgO-Co-Rnk" secondAttribute="leading" id="qeh-9c-SQ6"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="myActivityIndizator" destination="YE9-5K-LYn" id="kfg-di-37w"/>
+                        <outlet property="myActivityIndicator" destination="YE9-5K-LYn" id="kfg-di-37w"/>
                         <outlet property="myWebView" destination="okF-HY-nhT" id="byF-ij-8dH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3i-VV-j9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-696" y="73"/>
+            <point key="canvasLocation" x="-697.10144927536237" y="72.554347826086968"/>
         </scene>
         <!--Book Mark View Controller-->
         <scene sceneID="sHi-96-UxH">

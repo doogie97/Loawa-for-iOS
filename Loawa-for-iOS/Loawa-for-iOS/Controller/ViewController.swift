@@ -12,7 +12,7 @@ final class ViewController: UIViewController {
     let bookmarkstorage = BookmarkStorage()
     
     @IBOutlet weak var myWebView: WKWebView!
-    @IBOutlet weak var myActivityIndizator: UIActivityIndicatorView!
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,13 +94,13 @@ extension ViewController: BookMarkViewControllerDelegate {
 }
 extension ViewController: WKUIDelegate, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        self.myActivityIndizator.startAnimating()
+        self.myActivityIndicator.startAnimating()
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.myActivityIndizator.stopAnimating()
+        self.myActivityIndicator.stopAnimating()
         myWebView.allowsBackForwardNavigationGestures = true
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        self.myActivityIndizator.stopAnimating()
+        self.myActivityIndicator.stopAnimating()
     }
 }
