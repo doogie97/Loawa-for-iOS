@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 final class ViewController: UIViewController {
-    let bookMarker = BookMarker()
+    let bookmarkstorage = BookmarkStorage()
     
     @IBOutlet weak var myWebView: WKWebView!
     @IBOutlet weak var myActivityIndizator: UIActivityIndicatorView!
@@ -34,10 +34,13 @@ final class ViewController: UIViewController {
         showAddAlert()
     }
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
-        guard !bookMarker.userNames.isEmpty else { basicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
+        guard !bookmarkstorage.userNames.isEmpty else { basicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") as? BookMarkViewController else { return }
+
+//        bookMarkVC.userNames = bookmarkstorage.userNames.sorted() // 지워도될듯
+        
         bookMarkVC.delegate = self
-        bookMarkVC.userNames = bookMarker.userNames.sorted()
+        bookMarkVC.bookmarker = self.bookmarkstorage
         bookMarkVC.modalPresentationStyle = .fullScreen
         self.present(bookMarkVC, animated: true, completion: nil)
     }
@@ -63,8 +66,8 @@ final class ViewController: UIViewController {
     
     private func checkName(key: String) {
         do {
-            try bookMarker.checkName(name: key)
-            self.bookMarker.addBookMark(webView: self.myWebView, key: key)
+            try bookmarkstorage.checkName(name: key)
+            self.bookmarkstorage.addBookMark(webView: self.myWebView, key: key)
             self.basicAlert(title: nil, message: "등록완료!")
         } catch let error as RegisterError {
             switch error {
@@ -85,15 +88,11 @@ final class ViewController: UIViewController {
     
     private func getUserNames() {
         if let namesKey = UserDefaults.standard.stringArray(forKey: "UserNames") {
-            bookMarker.userNames = namesKey
+            bookmarkstorage.userNames = namesKey
         }
     }
 }
 extension ViewController: BookMarkViewControllerDelegate {
-    func changeNamesArray(userNames: [String]) {
-        getUserNames()
-    }
-    
     func searchName(name: String) {
         guard let userURL = UserDefaults.standard.url(forKey: name) else { return }
         loadWebPage("\(userURL)")

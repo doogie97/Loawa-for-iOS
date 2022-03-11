@@ -7,7 +7,7 @@
 
 import WebKit
 
-final class BookMarker {
+final class BookmarkStorage {
     var userNames: [String] = []
     
     func addBookMark(webView: WKWebView ,key: String) {

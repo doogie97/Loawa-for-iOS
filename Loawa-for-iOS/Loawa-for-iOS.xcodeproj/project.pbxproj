@@ -14,7 +14,7 @@
 		AC64749427D5BAEB00FAFB6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC64749327D5BAEB00FAFB6E /* Assets.xcassets */; };
 		AC64749727D5BAEB00FAFB6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC64749527D5BAEB00FAFB6E /* LaunchScreen.storyboard */; };
 		AC7A0E1727D7214D001F5896 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */; };
-		AC7A0E1D27D74270001F5896 /* BookMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E1C27D74270001F5896 /* BookMarker.swift */; };
+		AC7A0E1D27D74270001F5896 /* BookmarkStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E1C27D74270001F5896 /* BookmarkStorage.swift */; };
 		AC7A0E2127D7466B001F5896 /* BookMarkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E2027D7466B001F5896 /* BookMarkError.swift */; };
 		AC7A0E2327D756BB001F5896 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A0E2227D756BB001F5896 /* BookmarkTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +29,7 @@
 		AC64749627D5BAEB00FAFB6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC64749827D5BAEB00FAFB6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC7A0E1627D7214D001F5896 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
-		AC7A0E1C27D74270001F5896 /* BookMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarker.swift; sourceTree = "<group>"; };
+		AC7A0E1C27D74270001F5896 /* BookmarkStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkStorage.swift; sourceTree = "<group>"; };
 		AC7A0E2027D7466B001F5896 /* BookMarkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkError.swift; sourceTree = "<group>"; };
 		AC7A0E2227D756BB001F5896 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +77,7 @@
 		AC7A0E1E27D74276001F5896 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AC7A0E1C27D74270001F5896 /* BookMarker.swift */,
+				AC7A0E1C27D74270001F5896 /* BookmarkStorage.swift */,
 				AC7A0E2027D7466B001F5896 /* BookMarkError.swift */,
 			);
 			path = Model;
@@ -168,7 +168,7 @@
 			files = (
 				AC7A0E1727D7214D001F5896 /* BookMarkViewController.swift in Sources */,
 				AC64748F27D5BAEB00FAFB6E /* ViewController.swift in Sources */,
-				AC7A0E1D27D74270001F5896 /* BookMarker.swift in Sources */,
+				AC7A0E1D27D74270001F5896 /* BookmarkStorage.swift in Sources */,
 				AC64748B27D5BAEB00FAFB6E /* AppDelegate.swift in Sources */,
 				AC7A0E2327D756BB001F5896 /* BookmarkTableViewCell.swift in Sources */,
 				AC64748D27D5BAEB00FAFB6E /* SceneDelegate.swift in Sources */,
