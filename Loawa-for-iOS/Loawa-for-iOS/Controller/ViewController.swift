@@ -47,9 +47,6 @@ final class ViewController: UIViewController {
     @IBAction func touchBookMarkButton(_ sender: UIBarButtonItem) {
         guard !bookmarkstorage.userNames.isEmpty else { showBasicAlert(title:"경고" ,message: "등록된 즐겨찾기가 없습니다."); return }
         guard let bookMarkVC = self.storyboard?.instantiateViewController(withIdentifier: "BookMarkViewController") as? BookMarkViewController else { return }
-
-//        bookMarkVC.userNames = bookmarkstorage.userNames.sorted() // 지워도될듯
-        
         bookMarkVC.delegate = self
         bookMarkVC.bookmarker = self.bookmarkstorage
         bookMarkVC.modalPresentationStyle = .fullScreen
@@ -70,9 +67,9 @@ final class ViewController: UIViewController {
         } catch let error as RegisterError {
             switch error {
             case .emptyTextField:
-                showBasicAlert(title:"경고" ,message: "공백 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: error.errorMessage)
             case .duplicatenames:
-                showBasicAlert(title:"경고" ,message: "중복 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: error.errorMessage)
             }
         } catch { showBasicAlert(title: nil, message: "알 수 없는 오류")}
     }

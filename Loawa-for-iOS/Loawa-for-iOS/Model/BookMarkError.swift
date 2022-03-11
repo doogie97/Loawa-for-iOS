@@ -7,4 +7,15 @@
 enum RegisterError: Error {
     case emptyTextField
     case duplicatenames
+    
+    var errorMessage: String {
+        get {
+            switch self {
+            case .emptyTextField:
+                return "공백은 등록할 수 없습니다"
+            case .duplicatenames:
+                return "중복된 이름입니다"
+            }
+        }
+    }
 }

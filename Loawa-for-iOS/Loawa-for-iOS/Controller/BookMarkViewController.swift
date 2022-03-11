@@ -72,9 +72,9 @@ class BookMarkViewController: UIViewController {
         } catch let error as RegisterError {
             switch error {
             case .emptyTextField:
-                showBasicAlert(title:"경고" ,message: "공백 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: error.errorMessage)
             case .duplicatenames:
-                showBasicAlert(title:"경고" ,message: "중복 ㄴㄴ")
+                showBasicAlert(title:"경고" ,message: error.errorMessage)
             }
         } catch { showBasicAlert(title: nil, message: "알 수 없는 오류")}
     }
